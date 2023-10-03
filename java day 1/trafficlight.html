@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+</head>
+<body>
+    <!-- Create a canvas element with a red border -->
+    <canvas id="canvas" style="border: 2px solid red;"></canvas>
+</body>
+<script>
+    // Get the canvas element by its id
+    const canvas = document.getElementById("canvas");
+    // Get a 2D drawing context from the canvas
+    let ctx = canvas.getContext("2d");
+
+    // Create a black background for the traffic light
+    ctx.beginPath();
+    ctx.fillStyle = "black";
+    ctx.rect(10, 10, 260, 100);
+    ctx.fill();
+    ctx.closePath();
+
+    // Draw three circles to represent the traffic light colors
+    for(let i=0; i<3; i++)
+    {
+        ctx.beginPath();
+        // Set the fill color based on the index (0, 1, or 2) to represent red, yellow, or green
+        ctx.fillStyle =`rgb(${250-(250*(i==2?i:0))},${0+(250*i)},0)`;
+        // Draw a circle at specific positions for each traffic light color
+        ctx.arc(60+(80*i), 60, 30, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.closePath();
+    }
+</script>
+</html>
